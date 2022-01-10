@@ -1,3 +1,21 @@
+function newcard(container, member) {
+  container.innerHTML += `
+  <div class="team-card">
+    <div class="card-image">
+      <img
+        src="./img/${member.image}" 
+        alt="member"
+      />
+    </div>
+    <div class="card-text">
+      <h3>${member.name}</h3>
+      <p>${member.role}</p>
+    </div>
+  </div>
+  `
+}
+
+
 const team = [
     {
       name: 'Wayne Barnett',
@@ -49,20 +67,8 @@ const cardImage = document.querySelector(".card-image");
 
 for(let i = 1; i < team.length; i++) {
   
-  teamContainer.innerHTML += `
-  <div class="team-card">
-    <div class="card-image">
-      <img
-        src="./img/${team[i].image}" 
-        alt="member"
-      />
-    </div>
-    <div class="card-text">
-      <h3>${team[i].name}</h3>
-      <p>${team[i].role}</p>
-    </div>
-  </div>
-  `
+  newcard(teamContainer, team[i]);
+
 }
 
 
@@ -77,19 +83,30 @@ const addMember = document.getElementById("addMemberButton");
 // aggiungo il comando di attesa del click 
 // quando verrà premuto andrò a prendermi valori dei campi
 // Name Role Image
+// ed aggiungerò la carta nuova 
 
 addMember.addEventListener("click", function(){
-  const newMemberName = document.getElementById("name").value
-  const newMemberRole = document.getElementById("role").value
-  const newMemberImage = document.getElementById("image").value
+  let newMemberName = document.getElementById("name").value
+  let newMemberRole = document.getElementById("role").value
+  let newMemberImage = document.getElementById("image").value
 
   const newMember = {
-    name: newMemberName,
-    role: newMemberRole,
-    image: newMemberImage
+    "name": newMemberName,
+    "role": newMemberRole,
+    "image": newMemberImage
+  };
+
+ // indico una condizione che mi blocchi l'aggiunta del nuovo membro 
+ // se manca anche solo un dato
+  if(newMemberName === "" || newMemberRole === "" || newMemberImage === "") {
+    alert("Attenzione, valori non inseriti correttamente!!!")
+    return false;
   }
 
-  //push del nuovo dato acquisito
+  // push del nuovo dato acquisito
+  team.push(newMember);
+  // richiamo la funzione per la creazione della carta inserendo i nuovi
+  // dati acquisiti
+  newcard(teamContainer, newMember)
 
-  team.push(newMember)
 })
