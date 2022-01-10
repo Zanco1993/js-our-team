@@ -69,26 +69,27 @@ for(let i = 1; i < team.length; i++) {
 
 //------------------------------------------------------------------
 
+// parte bonus
 
+// seleziono ID button dell'html
+const addMember = document.getElementById("addMemberButton");
 
-// attraverso un ciclo for, "cammino" nella lista per quanti sono gli elementi
+// aggiungo il comando di attesa del click 
+// quando verrà premuto andrò a prendermi valori dei campi
+// Name Role Image
 
-// metodo createElement
+addMember.addEventListener("click", function(){
+  const newMemberName = document.getElementById("name").value
+  const newMemberRole = document.getElementById("role").value
+  const newMemberImage = document.getElementById("image").value
 
-// for(let i = 0; i < team.length; i++) {
+  const newMember = {
+    name: newMemberName,
+    role: newMemberRole,
+    image: newMemberImage
+  }
 
-//   const name = document.createElement("div");
-//   name.className = 'team-card';
-//   teamContainer.append(name);
+  //push del nuovo dato acquisito
 
-//   const card = document.createElement("div");
-//   card.className = 'card-image';
-//   teamCard.append(card);
-
-//   const image = document.createElement("img");
-//   image.src = team[i].image;
-//   cardImage.append(image);
-
-// }
-
-
+  team.push(newMember)
+})
