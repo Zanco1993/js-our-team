@@ -44,9 +44,36 @@ const teamContainer = document.querySelector(".team-container");
 const teamCard = document.querySelector(".team-card");
 const cardImage = document.querySelector(".card-image");
 
+
+// metodo innerHtml funzionante
+
+for(let i = 1; i < team.length; i++) {
+  
+  teamContainer.innerHTML += `
+  <div class="team-card">
+    <div class="card-image">
+      <img
+        src="./img/${team[i].image}" 
+        alt="member"
+      />
+    </div>
+    <div class="card-text">
+      <h3>${team[i].name}</h3>
+      <p>${team[i].role}</p>
+    </div>
+  </div>
+  `
+}
+
+
+
+//------------------------------------------------------------------
+
+
+
 // attraverso un ciclo for, "cammino" nella lista per quanti sono gli elementi
 
-// primo metodo non concluso
+// metodo createElement
 
 // for(let i = 0; i < team.length; i++) {
 
@@ -65,23 +92,3 @@ const cardImage = document.querySelector(".card-image");
 // }
 
 
-// secondo metodo innerHtml
-for(let i = 0; i < team.length; i++) {
-  
-  teamContainer.innerHTML += `
-  <div class="team-card">
-    <div class="card-image">
-      <img
-        src="./img/${team[i+1].image}" 
-        alt="member"
-      />
-    </div>
-    <div class="card-text">
-      <h3>${team[i+1].name}</h3>
-      <p>${team[i+1].role}</p>
-    </div>
-  </div>
-  `
-}
-
-// aggiunto il +1 perchè volevo che rimanesse la carta iniziale già scritta nell'html
