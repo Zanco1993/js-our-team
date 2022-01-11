@@ -1,18 +1,23 @@
 function newcard(container, member) {
+
+  container.innerHTML = '';
+
+  for(let i = 0; i < member.length; i++) {
   container.innerHTML += `
   <div class="team-card">
     <div class="card-image">
       <img
-        src="./img/${member.image}" 
-        alt="member"
+        src="./img/${team[i].image}" 
+        alt="${team[i].name}"
       />
     </div>
     <div class="card-text">
-      <h3>${member.name}</h3>
-      <p>${member.role}</p>
+      <h3>${team[i].name}</h3>
+      <p>${team[i].role}</p>
     </div>
   </div>
   `
+}
 }
 
 
@@ -59,19 +64,10 @@ const team = [
 // richiamo il mio container per poi aggiugere i vari membri del team
 
 const teamContainer = document.querySelector(".team-container");
-const teamCard = document.querySelector(".team-card");
-const cardImage = document.querySelector(".card-image");
-
 
 // metodo innerHtml funzionante
 
-for(let i = 1; i < team.length; i++) {
-  
-  newcard(teamContainer, team[i]);
-
-}
-
-
+newcard(teamContainer, team);
 
 //------------------------------------------------------------------
 
@@ -107,6 +103,7 @@ addMember.addEventListener("click", function(){
   team.push(newMember);
   // richiamo la funzione per la creazione della carta inserendo i nuovi
   // dati acquisiti
-  newcard(teamContainer, newMember)
+  // newcard(teamContainer, newMember)  PRIMO METODO
+  newcard(teamContainer, team);
 
 })
