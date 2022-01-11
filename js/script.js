@@ -7,13 +7,13 @@ function newcard(container, member) {
   <div class="team-card">
     <div class="card-image">
       <img
-        src="./img/${team[i].image}" 
-        alt="${team[i].name}"
+        src="./img/${member[i].image}" 
+        alt="${member[i].name}"
       />
     </div>
     <div class="card-text">
-      <h3>${team[i].name}</h3>
-      <p>${team[i].role}</p>
+      <h3>${member[i].name}</h3>
+      <p>${member[i].role}</p>
     </div>
   </div>
   `
